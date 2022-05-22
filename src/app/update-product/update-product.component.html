@@ -1,0 +1,115 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Edit Product</h3>
+    <form (ngSubmit)= "onSubmit()" #productForm = "ngForm">
+      <div class="form-group">
+        <label>Brand : </label>
+        <input type = "text"
+        class="form-control"
+        id = "brand"
+        [(ngModel)] = "product.brand"
+        name = "brand"
+        required
+        minlength="8"
+        maxlength="60"
+        placeholder="Provide Brand "
+        #brand = "ngModel"
+        >
+        <div class="alert alert-danger" *ngIf= "brand.invalid && (brand.dirty || brand.touched)">
+          <div *ngIf = "brand.errors?.['required']">
+            Provide Brand
+          </div>
+          <div *ngIf = "brand.errors?.['minlength']">
+            The Brand min length is 8 characters 
+          </div>
+          <div *ngIf = "brand.errors?.['maxlength']">
+            The Brand max length is 60 characters 
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label>Made In : </label>
+        <input type = "text"
+        class="form-control"
+        id = "madein"
+        [(ngModel)] = "product.madein"
+        name = "madein"
+        required
+        minlength="4"
+        maxlength="60"
+        placeholder="Provide Made In "
+        #madein = "ngModel"
+        >
+        <div class="alert alert-danger" *ngIf= "madein.invalid && (madein.dirty || madein.touched)">
+          <div *ngIf = "madein.errors?.['required']">
+            Provide Made In
+          </div>
+          <div *ngIf = "madein.errors?.['minlength']">
+            The Made In min length is 4 characters 
+          </div>
+          <div *ngIf = "madein.errors?.['maxlength']">
+            The Made In max length is 60 characters 
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Name : </label>
+        <input type = "text"
+        class="form-control"
+        id = "name"
+        [(ngModel)] = "product.name"
+        name = "name"
+        required
+        minlength="4"
+        maxlength="60"
+        placeholder="Provide Name "
+        #name = "ngModel"
+        >
+        <div class="alert alert-danger" *ngIf= "name.invalid && (name.dirty || name.touched)">
+          <div *ngIf = "name.errors?.['required']">
+            Provide Made In
+          </div>
+          <div *ngIf = "name.errors?.['minlength']">
+            The Made In min length is 4 characters 
+          </div>
+          <div *ngIf = "name.errors?.['maxlength']">
+            The Made In max length is 60 characters 
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Price : </label>
+        <input type = "number"
+        class="form-control"
+        id = "price"
+        [(ngModel)] = "product.price"
+        name = "price"      
+        required
+        placeholder="Provide Price "
+        min="1"
+        max="20000"
+        #price = "ngModel"
+        >
+        <div class="alert alert-danger" *ngIf= "price.invalid && (price.dirty || price.touched)">
+          <div *ngIf = "price.errors?.['required']">
+            Provide a valid Price.
+          </div>  
+          <div *ngIf = "price.errors?.['min']">
+            Min value is 0.
+          </div>              
+          <div *ngIf = "price.errors?.['max']">
+            Max value is 20,000.
+          </div>    
+        </div>
+      </div>
+      
+      <div class="row">
+        <button class="btn btn-success" [disabled]= "!productForm.form.valid">Save</button>
+        <button (click)="return()" class="btn btn-danger" style="margin-left: 10px;"> Cancel</button> 
+      </div>
+     
+    </form>
+  </div>
+  
